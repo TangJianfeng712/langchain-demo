@@ -1,17 +1,17 @@
-下面是整理好的 Pre 大纲，围绕你提到的三个核心模块：LangChain、LangGraph、LangSmith，均附带 JavaScript 示例代码：
+Below is the organized Pre outline, focusing on the three core modules you mentioned: LangChain, LangGraph, LangSmith, all with JavaScript example code:
 
 ---
 
-## 1. 🦜 LangChain（核心模型统一标准）
+## 1. 🦜 LangChain (Core Model Unified Standard)
 
-* **作用**：提供统一接口，接入各种 LLM（OpenAI、Anthropic、Hugging Face 等），并构建链（Chains）、Agents、Retriever 等组件 ([LangChain][1])。
+* **Role**: Provides unified interface to integrate various LLMs (OpenAI, Anthropic, Hugging Face, etc.), and build Chains, Agents, Retrievers and other components ([LangChain][1]).
 
-* **关键特性**：
+* **Key Features**:
 
-  * 统一 `@langchain/openai`、`@langchain/anthropic` 接口
-  * Chains、PromptTemplate、工具调用、聊天上下文管理
+  * Unified `@langchain/openai`, `@langchain/anthropic` interfaces
+  * Chains, PromptTemplate, tool calling, chat context management
 
-* **示例（JS）**：
+* **Example (JS)**:
 
   ```js
   import { ChatOpenAI } from "@langchain/openai";
@@ -26,21 +26,21 @@
   console.log(res.text);
   ```
 
-* **标准统一**：支持 OpenAI、Anthropic、Hugging Face 等，可切换模型不改业务逻辑结构 ([Langchain][2], [Langchain][3])。
+* **Standard Unified**: Supports OpenAI, Anthropic, Hugging Face, etc., allowing model switching without changing business logic structure ([Langchain][2], [Langchain][3]).
 
 ---
 
-## 2. LangGraph（工作流 + 三层架构）
+## 2. LangGraph (Workflow + Three-Layer Architecture)
 
-* **作用**：在 LangChain 基础上加入可**持久化、有状态、可交互**的 Agent 工作流编排框架 。
+* **Role**: Built on LangChain foundation, adds **persistent, stateful, interactive** Agent workflow orchestration framework.
 
-* **三层架构**：
+* **Three-Layer Architecture**:
 
-  1. **store**：持久化工作流状态与历史
-  2. **memory**：短期/长期记忆管理
-  3. **logic**：执行流程、条件判断、循环、Human-in-the-loop
+  1. **store**: Persists workflow state and history
+  2. **memory**: Short-term/long-term memory management
+  3. **logic**: Execution flow, conditional logic, loops, Human-in-the-loop
 
-* **JS 示例**（简化流程）：
+* **JS Example** (simplified workflow):
 
   ```js
   import { createReactAgent } from "@langchain/langgraph";
@@ -58,25 +58,25 @@
   console.log(output);
   ```
 
-* **特色**：
+* **Features**:
 
-  * 支持 Streaming：token-by-token 流响应模式 ([LangSmith][4], [Reddit][5], [LangChain][1], [LangChain AI][6])
-  * 支持 Durable execution、Human-in-the-loop、Memory 等高阶特性 ([LangChain AI][7])
+  * Supports Streaming: token-by-token streaming response mode ([LangSmith][4], [Reddit][5], [LangChain][1], [LangChain AI][6])
+  * Supports Durable execution, Human-in-the-loop, Memory and other advanced features ([LangChain AI][7])
 
 ---
 
-## 3. LangSmith（反馈/评估/运行追踪）
+## 3. LangSmith (Feedback/Evaluation/Execution Tracing)
 
-* **作用**：提供可视化 UI + SDK，监控、调试、评估和改进 LLM 应用，包括 Chains 和 Agents ([Langchain][2])。
+* **Role**: Provides visual UI + SDK for monitoring, debugging, evaluating and improving LLM applications, including Chains and Agents ([Langchain][2]).
 
-* **关键功能**：
+* **Key Functions**:
 
-  * **Feedback**：人工标注反馈 & 自动比较评估
-  * **Evaluation（Evals）**：批量运行、比较不同 prompt/model 的性能
-  * **Tracing**：事件级别追踪，查看每个 chain/node 的输入输出状态
-  * **Thread**：上下文沉淀，可复现交互
+  * **Feedback**: Manual annotation feedback & automatic comparison evaluation
+  * **Evaluation (Evals)**: Batch execution, comparing performance of different prompts/models
+  * **Tracing**: Event-level tracking, view input/output status of each chain/node
+  * **Thread**: Context persistence, reproducible interactions
 
-* **JS 使用示例**：
+* **JS Usage Example**:
 
   ```js
   import { LangSmithClient } from "@langchain/smith";
@@ -94,7 +94,7 @@
   await run.finish();
   ```
 
-* **评估示例**（伪代码）：
+* **Evaluation Example** (pseudo code):
 
   ```js
   const evalRes = await client.runOnDataset({
@@ -107,17 +107,17 @@
 
 ---
 
-### ✅ 总结对比
+### ✅ Summary Comparison
 
-| 模块        | 核心职责                                                 |
-| --------- | ---------------------------------------------------- |
-| LangChain | 接入统一模型 + 构建基础 Chains、Retriever、PromptTemplates、工具调用等 |
-| LangGraph | 基于 Chain 扩展支持工作流编排、持久化、有状态、循环、用户交互                   |
-| LangSmith | 可视化追踪 & 调试 & 评估平台，支持反馈、评估（Evals）、运行监控、线程管理           |
+| Module    | Core Responsibility                                                                                    |
+| --------- | ------------------------------------------------------------------------------------------------------ |
+| LangChain | Unified model integration + building basic Chains, Retrievers, PromptTemplates, tool calling, etc.   |
+| LangGraph | Extended Chain support for workflow orchestration, persistence, stateful, loops, user interaction     |
+| LangSmith | Visual tracking & debugging & evaluation platform, supporting feedback, evaluation (Evals), runtime monitoring, thread management |
 
 ---
 
-若你有特定业务场景（比如链中需要使用向量库、工具调用、Memory、Human-in-loop），可以继续展开具体 JS 示例。看你是否还需要深入某一部分？
+If you have specific business scenarios (like using vector databases, tool calling, Memory, Human-in-loop in chains), we can continue to expand with specific JS examples. Do you need to dive deeper into any particular section?
 
 [1]: https://www.langchain.com/langchain?utm_source=chatgpt.com "One interface, integrate any LLM. - LangChain"
 [2]: https://js.langchain.com/docs/introduction/?utm_source=chatgpt.com "LangChain.js"
