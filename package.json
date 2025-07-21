@@ -1,0 +1,31 @@
+{
+  "name": "week10",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/main.js",
+    "eval": "node src/main.js --evaluation",
+    "eval:workflow": "node src/main.js --evaluation=workflow",
+    "eval:tools": "node src/main.js --evaluation=tools",
+    "eval:auth": "node src/main.js --evaluation=auth",
+    "eval:data": "node src/main.js --evaluation=data",
+    "eval:local": "node src/main.js --evaluation=local",
+    "eval:comprehensive": "node src/main.js --evaluation=comprehensive"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@langchain/community": "^0.3.45",
+    "@langchain/core": "^0.3.57",
+    "@langchain/langgraph": "^0.2.74",
+    "@langchain/openai": "^0.5.11",
+    "@langchain/tavily": "^0.1.2",
+    "dotenv": "^16.5.0",
+    "openevals": "^0.1.0",
+    "tslab": "^1.0.22",
+    "uuid": "^11.1.0"
+  }
+}

@@ -1,0 +1,1 @@
+Log in, the email is dummy@funder.com, the password is a. And get the email of the two newly created funders
